@@ -1,11 +1,23 @@
 //Global variables
 var overalScor = 0;
-var initials = "MR";
+var initials = " ";
 var body = document.body;
+var secondsLeft = 30;
+var secondsLeft1 = 0;
+
+// Global function to get time when quiz was finished
+function allDoneTime() {
+    if (secondsLeft <= 0) {
+        secondsLeft1 = 0;
+    }
+    else{
+        secondsLeft1 = secondsLeft;
+    }
+    return secondsLeft1;
+}
 
 // Header
 // View Highscorse and Timer elements (div)
-
 var header1 = document.getElementById("header");
 var highSc = document.createElement("p");
 var timer = document.createElement("p");
@@ -15,25 +27,34 @@ highSc.textContent = "View Highscores";
 header1.appendChild(highSc);
 header1.appendChild(timer);
 
-var secondsLeft = 30;
-
 function setTime() {
   // Sets interval in variable
   var timerInterval = setInterval(function() {
     secondsLeft--;
     timer.textContent = "Time: " + secondsLeft;
 
-    if(secondsLeft === 0) {
+    if(secondsLeft <= 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
-      // Calls function to create and append image
-      sendMessage();
     }
-
+    // ??? How to stop execution ???
+    /*if (clearInterval()) {
+        return secondsLeft;
+    }*/
   }, 1000);
 }
 
 setTime();
+
+var header2 = document.getElementById("headerAllDone");
+var highSc2 = document.createElement("p");
+var timerAllDone = document.createElement("p");
+
+header2.appendChild(highSc2);
+header2.appendChild(timerAllDone);
+
+highSc2.textContent = "View Highscores";
+// timerAllDone.textContent = "Time: " + secondsLeft1;
 // Timer and events: 
 // 1. Wrong answer slash
 // 2. End time to get to All done section
@@ -83,52 +104,66 @@ questioanary.appendChild(answerLine);
 submitAnswer1.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
-    // to hide start div
+    // to hide and display div elements
     questioanary.style.display = "none";
-    // to display header
     header1.style.display = "block";
-    //to display questioanary div
     allDoneLocateDiv.style.display = "block";
+    header2.style.display = "block";
+    header1.style.display = "none";
+    // to collect final data
     answerResult = "Wrong";
     secondsLeft -= 10;
+    secondsLeft1 = secondsLeft;
+    timerAllDone.textContent = "Time: " + allDoneTime();
 });
 // Adding event listener for Questionary SubmitSnswer2
 submitAnswer2.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
-    // to hide start div
+    // to hide and display div elements
     questioanary.style.display = "none";
-    // to display header
     header1.style.display = "block";
-    //to display questioanary div
     allDoneLocateDiv.style.display = "block";
+    header2.style.display = "block";
+    header1.style.display = "none";
+    // to collect final data
     answerResult = "Wrong";
     secondsLeft -= 10;
+    secondsLeft1 = secondsLeft;
+    timerAllDone.textContent = "Time: " + allDoneTime();
 });
 // Adding event listener for Questionary SubmitSnswer3
 submitAnswer3.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
-    // to hide start div
+    // to hide and display div elements
     questioanary.style.display = "none";
-    // to display header
     header1.style.display = "block";
-    //to display questioanary div
     allDoneLocateDiv.style.display = "block";
+    header2.style.display = "block";
+    header1.style.display = "none";
+    // to collect final data
     answerResult = "Wrong";
     secondsLeft -= 10;
+    secondsLeft1 = secondsLeft;
+    timerAllDone.textContent = "Time: " + allDoneTime();
 });
 // Adding event listener for Questionary SubmitSnswer3
 submitAnswer4.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
-    // to hide start div
+    // to hide and display div elements
     questioanary.style.display = "none";
-    // to display header
     header1.style.display = "block";
-    //to display questioanary div
     allDoneLocateDiv.style.display = "block";
+    header2.style.display = "block";
+    header1.style.display = "none";
+    // to collect final data
     answerResult = "Correct";
+    secondsLeft1 = secondsLeft;
+    timerAllDone.textContent = "Time: " + allDoneTime();
+    overalScor += 10 + secondsLeft1;
+    finalScoreIndicator.textContent = "Your final score is: " + overalScor;
 });
 
 
@@ -150,7 +185,7 @@ var initialsBtn = document.createElement("button");
 
 
 allDone.textContent = "All done!";
-finalScoreIndicator.textContent = "Your final score is: " + overalScor;
+
 enterInitials.textContent = "Enter initials: ";
 initialsBtn.textContent = "Submit";
 
@@ -160,17 +195,20 @@ allDoneLocateDiv.appendChild(enterInitials);
 enterInitials.appendChild(enterInitialsInput);
 enterInitials.appendChild(initialsBtn);
 
+enterInitialsInput.setAttribute("id","input");
+
 
 // Adding event listener for All Done Submit Button
 initialsBtn.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
-    // to hide allDoneLocateDiv div
+    // to hide and display div elements
     allDoneLocateDiv.style.display = "none";
-    // to hide header
     header1.style.display = "none";
-    //to display Highscore div
     hScore1Div.style.display = "block";
+    header2.style.display = "none";
+
+    initials = document.getElementById("input").value;
 });
 
 
@@ -182,13 +220,16 @@ initialsBtn.addEventListener("click", function (event) {
 // Without header
 var hScore1Div = document.getElementById("hScore1");
 var highScoreH = document.createElement("h2");
-var resultInput = document.createElement("input"); // what is element
+var resultInput = document.createElement("input");
 var goBackBtn = document.createElement("button");
 var clearScoreBtn = document.createElement("button");
 
+resultInput.setAttribute("id","input2");
+
+
 
 highScoreH.textContent = "Highscores";
-resultInput.textContent = initials + " - " + overalScor; // what 
+//resultInput.textContent = initials + " - " + overalScor;
 goBackBtn.textContent = "Go Back";
 clearScoreBtn.textContent = "Clear Highscores";
 
@@ -197,16 +238,20 @@ hScore1Div.appendChild(resultInput);
 hScore1Div.appendChild(goBackBtn);
 hScore1Div.appendChild(clearScoreBtn);
 
+// 10/16/22 to start here
+document.getElementById('input2').value = " ";
+
+
 // Adding event listener for HighScore1 Go Back Button
 goBackBtn.addEventListener("click", function (event) {
     // Prevent the form from submitting. A button element without a type is a submit by default
     event.preventDefault();
     // to hide hScore1Div div
     hScore1Div.style.display = "none";
-    // to hide header
-    header1.style.display = "block";
     //to display Highscore div
     allDoneLocateDiv.style.display = "block";
+
+    header2.style.display = "block";
 });
 
 // Adding event listener for HighScore1 Clear Highscores Button
@@ -258,6 +303,7 @@ clearScoreBtn1.addEventListener("click", function (event) {
     hScore2Div.style.display = "none";
     //to display Start div
     start.style.display = "block";
+    location.reload();
 });
 
 // Coding Quiz Chalange
@@ -288,3 +334,4 @@ startQuizBtn.addEventListener("click", function (event) {
     //to display questioanary div
     questioanary.style.display = "block";
   });
+ 
