@@ -7,3 +7,5 @@
 - https://www.w3schools.com/jsref/met_loc_reload.asp
 - https://www.w3schools.com/js/js_functions.asp
 - https://www.delftstack.com/howto/javascript/add-id-to-element-using-javascript/
+- https://stackoverflow.com/questions/11041201/html-display-result-in-text-input-field
+- 
