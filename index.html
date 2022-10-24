@@ -1,57 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>JS Quiz</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>JS Quiz</title>
+        <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
 
-<body id = "body">
-<!-- Header and 5 div elements added to hidethem by css property -->
-
-    <div id="header"> 
-        <button id="header1Btn">View Highscores</button>
-        <p id="timerHeader1">Timer</p>
-    </div>
-    <div id="headerAllDone"> 
-        <button id="header2Btn">View Highscores</button>
-        <p id="timerHeader2"></p>        
-    </div>
-    <div id="questionary">
-        <h2 id = "dispQuest">Question to be displayed by function</h2>
-        <button id="answerBtn" class="answerBtn">SubmitAnsw1</button>
-        <button id="answerBtn" class="answerBtn">SubmitAnsw2</button>
-        <button id="answerBtn" class="answerBtn">SubmitAnsw3</button>
-        <button id="answerBtn" class="answerBtn">SubmitAnsw4</button>
-        <p id = "answIndicP"></p>
-    </div>
-    <div id="allDone">
-        <h2>All done!</h2>
-        <p id="allDoneP"></p>
-        <label for="inputEl">Enter initials:</label>
-        <input id="inputEl"></input>
-        <button id = "submitInitBtn">Submit</button>
-    </div>
-    <div id="hScore1">
-        <h2>Highscores</h2>
-        <ol id = "dispHighscoreList" style="list-style-type:upper-roman"></ol>
-        <button id="highscoreOutBtnGoBack">Go Back</button>
-        <button id="highscoreOutBtnClear">Clear Highscores</button>
-    </div>
-    <div id="hScore2">
-        <h2>Highscores</h2>
-        <ol id="dispHighscoreList" style="list-style-type:upper-roman"></ol>
-        <button id="highscoreFinalOutBtnGoBack">Go Back</button>
-        <button id="highscoreFinalOutBtnClear">Clear Highscores</button>
-    </div>
-    <div id="start">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Try to answer the following code related
-         questions whithin the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-         <button id="start-button">Start Quiz</button>
-    </div>
-  <script src="./assets/js/script.js"></script>
-</body>
+    <body id="body">
+    <!-- Header and 5 div elements added to hide them by css property -->
+        <!-- first header -->
+        <div id="header"> 
+            <button id="header1Btn">View Highscores</button>
+            <p id="timerHeader1">Timer</p>
+        </div>
+        <!-- allDone header -->
+        <div id="headerAllDone"> 
+            <button id="header2Btn">View Highscores</button>
+            <p id="timerHeader2"></p>        
+        </div>
+        <!-- quiz qestions section -->
+        <div id="questionary">
+            <h2 id = "dispQuest">Question to be displayed by function</h2>
+            <button id="answerBtn" class="answerBtn">SubmitAnsw1</button>
+            <button id="answerBtn" class="answerBtn">SubmitAnsw2</button>
+            <button id="answerBtn" class="answerBtn">SubmitAnsw3</button>
+            <button id="answerBtn" class="answerBtn">SubmitAnsw4</button>
+            <p id = "answIndicP"></p>
+        </div>
+        <!-- allDone section to collect initials and display current quiz score -->
+        <div id="allDone">
+            <h2>All done!</h2>
+            <p id="allDoneP"></p>
+            <label for="inputEl">Enter initials:</label>
+            <input id="inputEl"></input>
+            <button id = "submitInitBtn">Submit</button>
+        </div>
+        <!-- Highscore first section with highScorse results (tamplate from presentation bootcamp file repo) -->
+        <div id="hScore1">
+            <h2>Highscores</h2>
+            <ol id = "dispHighscoreList" style="list-style-type:upper-roman"></ol>
+            <div class="highScores">
+                <button id="highscoreOutBtnGoBack">Go Back</button>
+                <button id="highscoreOutBtnClear">Clear Highscores</button>
+            </div>
+        </div>
+        <!-- Highscore second section without highScorse results (tamplate from presentation bootcamp file repo) -->
+        <div id="hScore2">
+            <h2>Highscores</h2>
+            <ol id="dispHighscoreList" style="list-style-type:upper-roman"></ol>
+            <div class="highScores">
+                <button id="highscoreFinalOutBtnGoBack">Go Back</button>
+                <button id="highscoreFinalOutBtnClear">Clear Highscores</button>
+            </div>
+        </div>
+        <!-- start quiz block is visible on upload webpage event -->
+        <div id="start">
+            <h1>Coding Quiz Challenge</h1>
+            <p>Try to answer the following code related
+            questions whithin the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+            <button id="start-button">Start Quiz</button>
+        </div>
+        <script src="./assets/js/script.js"></script>
+    </body>
 </html>

@@ -5,6 +5,7 @@ var body = document.body;
 var secondsLeft = 30;
 var secondsLeft1 = 0;
 var timerInterval;
+var allResults = [];
 
 // navigation vars for div elements
 var bodyEl = document.querySelector("#body");
@@ -102,12 +103,11 @@ function allDoneTime() {
 // event listener for all buttons in the body html element
 bodyEl.addEventListener("click", function (event) {
     var element = event.target;
-
     // display Questionary div
     if (element.matches("#start-button")) {
         start.style.display = "none";
-        header1.style.display = "block";
-        questioanary.style.display = "block";
+        header1.style.display = "flex";
+        questioanary.style.display = "flex";
         // to lunch quiz function: display questions and set time
         setTime();
         renderQuestion();
@@ -138,13 +138,12 @@ bodyEl.addEventListener("click", function (event) {
     else if(element.matches("#submitInitBtn")){
         allDoneLocateDiv.style.display = "none";
         header1.style.display = "none";
-        hScore1Div.style.display = "block";
+        hScore1Div.style.display = "flex";
         header2.style.display = "none";
         
         // to save initials and score to array
-        var allResults = [];
         var initials = document.getElementById("inputEl").value;
-        var saveHS = initials + " - " + overalScor + ";";
+        var saveHS = initials + "-" + overalScor + ";";
         var toAppendLi = 0;
         allResults.push(saveHS);
         //to add curent result in Highscore section
@@ -153,53 +152,48 @@ bodyEl.addEventListener("click", function (event) {
         ulEl.append(newLi);
         toAppendLi++;
         overalScor = 0;
+        // safe global arrey to local storage
+        localStorage.setItem("allScorses", JSON.stringify(allResults));
     }
     // event for "Go Back" button in Higscore1 div to display Higscore2 div
     else if(element.matches("#highscoreOutBtnGoBack")){
         hScore1Div.style.display = "none";
-        allDoneLocateDiv.style.display = "block";
-        header2.style.display = "block";
+        allDoneLocateDiv.style.display = "flex";
+        header2.style.display = "flex";
     }
     // event for "Clear Highscores" button in Higscore1 div to display Higscore2 div
     else if(element.matches("#highscoreOutBtnClear")){
         hScore1Div.style.display = "none";
         header1.style.display = "none";
-        hScore2Div.style.display = "block";
+        hScore2Div.style.display = "flex";
     }
     // event for "Go Back" button in Higscore2 div to display Start div
     else if(element.matches("#highscoreFinalOutBtnGoBack")){
         hScore2Div.style.display = "none";
-        hScore1Div.style.display = "block";
+        hScore1Div.style.display = "flex";
     }
     // event for "Clear Highscores" button in Higscore2 div to display Start div
     else if(element.matches("#highscoreFinalOutBtnClear")){
         hScore2Div.style.display = "none";
-        start.style.display = "block";
+        start.style.display = "flex";
         secondsLeft = 30;
     }
-    // event for "View Highscores" button in Header div to display Highscores1 div
+    // event for "View Highscores" button in Header div to switch to another html page
     else if(element.matches("#header1Btn")){
-        hScore1Div.style.display = "block";
-        header1.style.display = "none";
-        header2.style.display = "none";
-        questioanary.style.display = "none";
+        visitResultPage();
     }
-    // event for "View Highscores" button in Header2 div to display Highscores1 div
+    // event for "View Highscores" button in Header2 div to switch to another html page
     else if(element.matches("#header2Btn")){
-        hScore1Div.style.display = "block";
-        header1.style.display = "none";
-        header2.style.display = "none";
-        questioanary.style.display = "none";
-        allDoneLocateDiv.style.display = "none";
+        visitResultPage();
     }
 });
 
 // function to display quiz section
 function submitAnswer() {
     questioanary.style.display = "none";
-    header1.style.display = "block";
-    allDoneLocateDiv.style.display = "block";
-    header2.style.display = "block";
+    header1.style.display = "flex";
+    allDoneLocateDiv.style.display = "flex";
+    header2.style.display = "flex";
     header1.style.display = "none";
     // to display final result
     yourScoreIs.innerHTML = "Yor final score is: " + overalScor;
@@ -217,4 +211,9 @@ function renderQuestion() {
         answerListBtn[j].textContent = questions[questionIndex].options[j];
     }
     questionIndex++;
+}
+
+// function to switch to another html page and review result from local storage
+function visitResultPage(){
+    window.location="./assets/html/allScores.html";
 }

@@ -1,25 +1,65 @@
-#header{
-    display: none;  
+#body{
+    width: 50%;
 }
 
+/* to style start div */
+#start{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+}
+/* to style first header div. Hiden by default */
+#header{
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/* to style header for allDone div. Hiden by default */
 #headerAllDone{
     display: none;  
+    flex-direction: row;
+    justify-content: space-between;
 }
-
+/* to style questionary div. Hiden by default */
 #questionary{
-    display: none;  
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
+/* to style allDone div. Hiden by default */
 #allDone{
     display: none;  
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
-
+/* to style highscore first div (tamplate from presentation bootcamp file repo). Hiden by default */
 #hScore1{
-    display: none;  
-}
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
+}
+/* to style highscore second div (tamplate from presentation bootcamp file repo). Hiden by default */
 #hScore2{
-    display: none;  
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center; 
 }
-
-
+/* to style button's div in highscore section. */
+.highScores{
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+    margin: 1%;
+}
+/* to buttons accross html page */
+button{
+    width: 20%;
+    margin: 1%;
+}
